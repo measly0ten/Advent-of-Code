@@ -12,9 +12,7 @@ def calculate_total_distance(left_list, right_list):
 left_list = []
 right_list = []
 
-with open(
-    "/Users/bwbblegum/Desktop/advent of code/day 1/part 1/input.txt", "r"
-) as file:
+with open("input.txt", "r") as file:
     for line in file:
         # Split the line into two numbers and convert them to integers
         l, r = map(int, line.split())
