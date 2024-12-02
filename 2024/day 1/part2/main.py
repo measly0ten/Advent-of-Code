@@ -22,5 +22,5 @@ def calculate_similarity_score(input_file):
 
 
 # Example usage
-input_file = "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 1/part2/input.txt"  # Replace with the path to your input file
+input_file = "input.txt"  # Replace with the path to your input file
 print("Total Similarity Score:", calculate_similarity_score(input_file))
