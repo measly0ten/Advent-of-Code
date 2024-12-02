@@ -39,7 +39,7 @@ def analyze_reports_with_dampener(input_file):
 
 
 # Example usage
-input_file = "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 2/input.txt"  # Replace with the path to your input file
+input_file = "input.txt"  # Replace with the path to your input file
 print(
     "Number of Safe Reports with Dampener:", analyze_reports_with_dampener(input_file)
 )
