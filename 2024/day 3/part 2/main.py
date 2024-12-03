@@ -31,9 +31,7 @@ def calculate_sum_of_muls(memory):
 
 if __name__ == "__main__":
     # Read the input file
-    with open(
-        "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 3/input.txt", "r"
-    ) as file:
+    with open("input.txt", "r") as file:
         corrupted_memory = file.read()
 
     # Compute the result
