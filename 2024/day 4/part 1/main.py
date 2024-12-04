@@ -44,7 +44,7 @@ def read_grid_from_file(file_path):
 
 # Main function
 if __name__ == "__main__":
-    file_path = "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 4/input.txt"  # Replace with your file path
+    file_path = "input.txt"  # Replace with your file path
     grid = read_grid_from_file(file_path)
     result = count_word_occurrences(grid)
     print("The word XMAS appears", result, "times.")

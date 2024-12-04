@@ -13,7 +13,7 @@ sys.setrecursionlimit(10**6)
 infile = (
     sys.argv[1]
     if len(sys.argv) >= 2
-    else "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 4/input.txt"
+    else "input.txt"
 )
 p1 = 0
 p2 = 0
