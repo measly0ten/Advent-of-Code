@@ -4,7 +4,7 @@ from functools import cmp_to_key
 
 
 with open(
-    "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 5/input.txt", "r"
+    "input.txt", "r"
 ) as f:
     data = f.read()
 
