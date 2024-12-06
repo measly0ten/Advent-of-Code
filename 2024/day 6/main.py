@@ -13,7 +13,7 @@ sys.setrecursionlimit(10**6)
 infile = (
     sys.argv[1]
     if len(sys.argv) > 1
-    else "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 6/input.txt"
+    else "input.txt"
 )
 with open(infile) as f:
     G = f.read().strip().split("\n")
