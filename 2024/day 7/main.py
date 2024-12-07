@@ -46,9 +46,7 @@ def find_calibration_results(input_data):
 
 
 # Read input from a file
-with open(
-    "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 7/input.txt", "r"
-) as file:
+with open("input.txt", "r") as file:
     input_data = file.read().strip().split("\n")
 
 # Calculate the part 1 and part 2 calibration results
