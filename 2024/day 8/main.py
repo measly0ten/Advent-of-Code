@@ -78,9 +78,7 @@ def day8_2(input_data):
 
 
 # Reading from input.txt file
-with open(
-    "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 8/input.txt", "r"
-) as file:
+with open("input.txt", "r") as file:
     input_data = file.read()
 
 # Call the functions with the input data
