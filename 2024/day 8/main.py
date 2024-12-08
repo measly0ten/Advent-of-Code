@@ -1,64 +1,88 @@
-def parse_map(input_map):
-    """Parse the input map into a list of antenna locations grouped by frequency."""
+def day8_1(input_data):
+    lines = input_data.strip().split("\n")
+    grid = [list(line) for line in lines]
+
     antennas = {}
-    for y, row in enumerate(input_map):
-        for x, char in enumerate(row):
-            if char != ".":
-                if char not in antennas:
-                    antennas[char] = []
-                antennas[char].append((x, y))
-    return antennas
+    anti_nodes = set()
+
+    for row in range(len(grid)):
+        for col in range(len(grid[row])):
+            if grid[row][col] != ".":
+                if grid[row][col] not in antennas:
+                    antennas[grid[row][col]] = []
+                antennas[grid[row][col]].append((row, col))
+
+    for positions in antennas.values():
+        for i in range(len(positions)):
+            for j in range(i + 1, len(positions)):
+                pos1 = positions[i]
+                pos2 = positions[j]
+
+                delta_row = pos2[0] - pos1[0]
+                delta_col = pos2[1] - pos1[1]
+
+                anti_node1 = (pos1[0] - delta_row, pos1[1] - delta_col)
+                anti_node2 = (pos2[0] + delta_row, pos2[1] + delta_col)
+
+                if 0 <= anti_node1[0] < len(grid) and 0 <= anti_node1[1] < len(grid[0]):
+                    anti_nodes.add(anti_node1)
+
+                if 0 <= anti_node2[0] < len(grid) and 0 <= anti_node2[1] < len(grid[0]):
+                    anti_nodes.add(anti_node2)
+
+    output = len(anti_nodes)
+    print("Output Day 8 Part 1:", output)
 
 
-def find_antinodes(antennas, width, height):
-    """Find all unique antinode locations within the map boundaries."""
-    antinodes = set()
+def day8_2(input_data):
+    lines = input_data.strip().split("\n")
+    grid = [list(line) for line in lines]
 
-    for freq, positions in antennas.items():
-        print(f"Processing frequency: {freq} with positions: {positions}")
-        n = len(positions)
-        for i in range(n):
-            for j in range(i + 1, n):
-                x1, y1 = positions[i]
-                x2, y2 = positions[j]
+    antennas = {}
+    anti_nodes = set()
 
-                # Calculate X-Y distance
-                dx = x2 - x1
-                dy = y2 - y1
+    for row in range(len(grid)):
+        for col in range(len(grid[row])):
+            if grid[row][col] != ".":
+                if grid[row][col] not in antennas:
+                    antennas[grid[row][col]] = []
+                antennas[grid[row][col]].append((row, col))
 
-                # New points in opposite directions
-                new_point_a = (x1 - dx, y1 - dy)
-                new_point_b = (x2 + dx, y2 + dy)
+    for positions in antennas.values():
+        for i in range(len(positions)):
+            for j in range(i + 1, len(positions)):
+                pos1 = positions[i]
+                pos2 = positions[j]
 
-                # Check if points are within grid boundaries
-                if 0 <= new_point_a[0] < width and 0 <= new_point_a[1] < height:
-                    antinodes.add(new_point_a)
-                    print(f"Antinode added at: {new_point_a}")
-                if 0 <= new_point_b[0] < width and 0 <= new_point_b[1] < height:
-                    antinodes.add(new_point_b)
-                    print(f"Antinode added at: {new_point_b}")
+                delta_row = pos2[0] - pos1[0]
+                delta_col = pos2[1] - pos1[1]
 
-    return antinodes
+                anti_node1_row, anti_node1_col = pos1[0], pos1[1]
+                while 0 <= anti_node1_row < len(grid) and 0 <= anti_node1_col < len(
+                    grid[0]
+                ):
+                    anti_nodes.add((anti_node1_row, anti_node1_col))
+                    anti_node1_row -= delta_row
+                    anti_node1_col -= delta_col
+
+                anti_node2_row, anti_node2_col = pos2[0], pos2[1]
+                while 0 <= anti_node2_row < len(grid) and 0 <= anti_node2_col < len(
+                    grid[0]
+                ):
+                    anti_nodes.add((anti_node2_row, anti_node2_col))
+                    anti_node2_row += delta_row
+                    anti_node2_col += delta_col
+
+    output = len(anti_nodes)
+    print("Output Day 8 Part 2:", output)
 
 
-# Rest of the code remains unchanged
-
-
-# Read input from a file
+# Reading from input.txt file
 with open(
     "/Users/bwbblegum/Documents/GitHub/Advent-of-Code/2024/day 8/input.txt", "r"
 ) as file:
-    input_map = file.read().strip().split("\n")
+    input_data = file.read()
 
-# Map dimensions
-height = len(input_map)
-width = len(input_map[0])
-
-# Parse the map and find antennas
-antennas = parse_map(input_map)
-
-# Find unique antinodes
-unique_antinodes = find_antinodes(antennas, width, height)
-
-# Count and output the result
-print("Total Unique Antinode Locations:", len(unique_antinodes))
+# Call the functions with the input data
+day8_1(input_data)
+day8_2(input_data)
